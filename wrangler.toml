@@ -1,0 +1,20 @@
+
+
+
+
+name = "copenhagenmarathon"  # Name of your Worker
+type = "javascript"
+
+kv_namespaces = [
+  { binding = "copenhagenMarathon", id = "f4dc5a515ccf4e919761c04edf96eab0" }
+]
+
+
+send_email = [
+    {type="send_email", name = "SEB"},
+
+]
+
+[[email]]
+binding = "SEB"  # Must match the binding in your code
+sender = "<SENDER>@example.com"  # Your verified sender email address
