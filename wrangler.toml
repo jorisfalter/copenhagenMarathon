@@ -15,6 +15,3 @@ send_email = [
 
 ]
 
-[[email]]
-binding = "SEB"  # Must match the binding in your code
-sender = "<SENDER>@example.com"  # Your verified sender email address
