@@ -1,4 +1,4 @@
-# copenhagen marathon marketplace robot
+# Copenhagen Marathon Marketplace Robot
 
 ## Goal
 
