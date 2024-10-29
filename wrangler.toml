@@ -9,7 +9,7 @@ kv_namespaces = [
 ]
 
 send_email = [
-    {name = "<SEB>"},
+    {name = "SEB"},
 ]
 
 [observability]
