@@ -1,17 +1,21 @@
-
-
-
-
 name = "copenhagenmarathon"  # Name of your Worker
-type = "javascript"
+
+# Specify the entry-point script
+main = "worker.js"
+compatibility_date = "2024-10-29"  # Set the compatibility date
+
 
 kv_namespaces = [
   { binding = "copenhagenMarathon", id = "f4dc5a515ccf4e919761c04edf96eab0" }
 ]
 
 
+
 send_email = [
-    {type="send_email", name = "SEB"},
+    {name = "<SEB>"},
 
 ]
 
+[observability]
+enabled = true
+head_sampling_rate = 1
