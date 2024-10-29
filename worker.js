@@ -19,6 +19,7 @@ export default {
       await sendEmailNotification(env, currentContent);
     } else {
       console.log("No changes detected.");
+      await sendEmailNotification(env, "not changed");
     }
   },
 };
