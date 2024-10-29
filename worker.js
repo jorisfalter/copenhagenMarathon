@@ -37,7 +37,7 @@ async function fetchWebsiteContent() {
 // Function to send email notification
 async function sendEmailNotification(env, content) {
   const senderEmail = "hooray@marjonjoris.it"; // Your sender email (must be configured in Cloudflare Email Routing)
-  const recipientEmail = "joris@jorisfalter.com"; // The recipient email
+  const recipientEmail = "marjonjoris2021@gmail.com"; // The recipient email
 
   // Construct the raw email content with subject and body
   const emailContent = `From: ${senderEmail}
