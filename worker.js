@@ -26,11 +26,13 @@ export default {
 
 // Function to fetch the website content
 async function fetchWebsiteContent() {
-  // const response = await fetch("https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us");
-  // for testing purposes, using my bridgeopen script
   const response = await fetch(
-    "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
+    "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
   );
+  // for testing purposes, using my bridgeopen script
+  //   const response = await fetch(
+  // "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
+  //   );
   return await response.text();
 }
 
