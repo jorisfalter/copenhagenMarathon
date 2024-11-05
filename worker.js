@@ -31,8 +31,8 @@ export default {
 async function fetchWebsiteContent() {
   // for testing purposes, using my bridgeopen script
   const response = await fetch(
-    // "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
-    "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
+    "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
+    // "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
   );
 
   // return
@@ -42,18 +42,18 @@ async function fetchWebsiteContent() {
 // Function to send a notification (using Pushover or other services)
 async function sendPushoverNotification(message) {
   console.log("sending push");
-  // const response = await fetch("https://api.pushover.net/1/messages.json", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //   body: new URLSearchParams({
-  //     token: env.PUSHOVER_TOKEN,
-  //     user: env.PUSHOVER_USER,
-  //     message: message,
-  //   }),
-  // });
-  // if (!response.ok) {
-  //   console.error("Failed to send push notification:", await response.text());
-  // }
+  const response = await fetch("https://api.pushover.net/1/messages.json", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      token: env.PUSHOVER_TOKEN,
+      user: env.PUSHOVER_USER,
+      message: message,
+    }),
+  });
+  if (!response.ok) {
+    console.error("Failed to send push notification:", await response.text());
+  }
 }
 
 // Function to send email notification
