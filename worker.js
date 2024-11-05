@@ -16,9 +16,9 @@ export default {
       await env.copenhagenMarathon.put(PREVIOUS_PAGE_KEY, currentContent);
 
       // Send email notification about the change
-      await sendPushoverNotification(
-        "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
-      ); // sending the link as the message
+      // await sendPushoverNotification(
+      //   "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
+      // ); // sending the link as the message
       await sendEmailNotification(env, currentContent);
     } else {
       console.log("No changes detected.");
@@ -29,13 +29,14 @@ export default {
 
 // Function to fetch the website content
 async function fetchWebsiteContent() {
-  // const response = await fetch(
-  //   "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
-  // );
-  // for testing purposes, using my bridgeopen script
   const response = await fetch(
-    "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
+    "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
   );
+  // for testing purposes, using my bridgeopen script
+  // const response = await fetch(
+  //   "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
+  // );
+  // return
   return await response.text();
 }
 
