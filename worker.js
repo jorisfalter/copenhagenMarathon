@@ -17,8 +17,8 @@ export default {
 
       // Send email notification about the change
       await sendPushoverNotification(
-        "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us",
-        env
+        env,
+        "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
       ); // sending the link as the message
       await sendEmailNotification(env, currentContent);
     } else {
@@ -41,7 +41,7 @@ async function fetchWebsiteContent() {
 }
 
 // Function to send a notification (using Pushover or other services)
-async function sendPushoverNotification(message) {
+async function sendPushoverNotification(env, message) {
   console.log("sending push");
   const response = await fetch("https://api.pushover.net/1/messages.json", {
     method: "POST",
