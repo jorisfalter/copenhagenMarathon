@@ -16,9 +16,9 @@ export default {
       await env.copenhagenMarathon.put(PREVIOUS_PAGE_KEY, currentContent);
 
       // Send email notification about the change
-      // await sendPushoverNotification(
-      //   "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
-      // ); // sending the link as the message
+      await sendPushoverNotification(
+        "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
+      ); // sending the link as the message
       await sendEmailNotification(env, currentContent);
     } else {
       console.log("No changes detected.");
@@ -29,32 +29,31 @@ export default {
 
 // Function to fetch the website content
 async function fetchWebsiteContent() {
+  // for testing purposes, using my bridgeopen script
   const response = await fetch(
     "https://secure.onreg.com/onreg2/bibexchange/?eventid=6591&language=us"
+    //   "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
   );
-  // for testing purposes, using my bridgeopen script
-  // const response = await fetch(
-  //   "https://bridgeopen-0fd60d885493.herokuapp.com/ledstatus"
-  // );
+
   // return
   return await response.text();
 }
 
 // Function to send a notification (using Pushover or other services)
 async function sendPushoverNotification(message) {
-  const response = await fetch("https://api.pushover.net/1/messages.json", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      token: env.PUSHOVER_TOKEN,
-      user: env.PUSHOVER_USER,
-      message: message,
-    }),
-  });
-
-  if (!response.ok) {
-    console.error("Failed to send push notification:", await response.text());
-  }
+  console.log("sending push");
+  // const response = await fetch("https://api.pushover.net/1/messages.json", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //   body: new URLSearchParams({
+  //     token: env.PUSHOVER_TOKEN,
+  //     user: env.PUSHOVER_USER,
+  //     message: message,
+  //   }),
+  // });
+  // if (!response.ok) {
+  //   console.error("Failed to send push notification:", await response.text());
+  // }
 }
 
 // Function to send email notification
