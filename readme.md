@@ -7,3 +7,5 @@ Track every minute whether someone sells their Copenhagen Marathon ticket on the
 ## Tech
 
 Cloudflare Workers
+Cloudflare Emails
+PushOver notifications

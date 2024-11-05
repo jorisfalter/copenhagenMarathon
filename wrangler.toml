@@ -18,3 +18,9 @@ head_sampling_rate = 1
 
 [triggers]
 crons = ["*/1 * * * *"]
+
+[vars]
+PUSHOVER_TOKEN = "your-token"
+PUSHOVER_USER = "your-user"
+
+ 
