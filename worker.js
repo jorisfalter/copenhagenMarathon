@@ -11,6 +11,7 @@ export default {
 
     if (previousContent !== currentContent) {
       console.log("Website content has changed!");
+      logDiff = logDifferences(previousContent, currentContent);
 
       // Update the stored content in KV
       await env.copenhagenMarathon.put(PREVIOUS_PAGE_KEY, currentContent);
@@ -24,7 +25,8 @@ export default {
       // Send email notification about the change
       await sendEmailNotification(
         env,
-        "https://www.isa.nl/employment/vacancies/"
+        "https://www.isa.nl/employment/vacancies/",
+        logDiff
       );
     } else {
       console.log("No changes detected.");
