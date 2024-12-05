@@ -34,7 +34,7 @@ export default {
 
     if (previousContent !== currentContent) {
       console.log("Website content has changed!");
-      logDiff = logDifferences(previousContent, currentContent);
+      const logDiff = logDifferences(previousContent, currentContent);
 
       // Update the stored content in KV
       await env.copenhagenMarathon.put(PREVIOUS_PAGE_KEY, currentContent);
