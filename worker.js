@@ -9,7 +9,12 @@ function logDifferences(previous, current) {
   const differences = [];
 
   previousLines.forEach((line, index) => {
-    if (line !== currentLines[index]) {
+    // Skip logging changes for specific patterns
+    if (
+      line !== currentLines[index] &&
+      !line.includes("wordfence") &&
+      !line.includes("email-protection")
+    ) {
       differences.push(
         `Line ${index + 1} changed: "${line}" to "${
           currentLines[index] || "undefined"
