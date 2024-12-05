@@ -2,6 +2,29 @@ import { EmailMessage } from "cloudflare:email";
 
 const PREVIOUS_PAGE_KEY = "previous_page_content";
 
+// Function to log differences between previous and current content
+function logDifferences(previous, current) {
+  const previousLines = previous.split("\n");
+  const currentLines = current.split("\n");
+  const differences = [];
+
+  previousLines.forEach((line, index) => {
+    if (line !== currentLines[index]) {
+      differences.push(
+        `Line ${index + 1} changed: "${line}" to "${
+          currentLines[index] || "undefined"
+        }"`
+      );
+    }
+  });
+
+  if (differences.length > 0) {
+    console.log("Differences found:\n" + differences.join("\n"));
+  } else {
+    console.log("No specific differences found, but content has changed.");
+  }
+}
+
 export default {
   async scheduled(event, env, ctx) {
     console.log("Cron job triggered at: " + new Date().toISOString());
