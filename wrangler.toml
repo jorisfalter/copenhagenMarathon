@@ -21,7 +21,7 @@ head_sampling_rate = 1
 crons = ["*/1 * * * *"]
 
 [vars]
-PUSHOVER_TOKEN
-PUSHOVER_USER
+# PUSHOVER_TOKEN
+# PUSHOVER_USER
 
  
