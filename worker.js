@@ -41,7 +41,7 @@ export default {
         url: "https://www.amityschool.nl/about/vacancies",
         key: "amity",
       },
-      // { url: "https://www.ishilversum.nl/employment", key: "hilversum" },
+      { url: "https://www.ishilversum.nl/employment", key: "hilversum" },
       { url: "https://www.isutrecht.nl/vacancies", key: "utrecht" },
     ];
 
