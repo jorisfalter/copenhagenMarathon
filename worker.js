@@ -10,7 +10,9 @@ function logDifferences(previous, current) {
     if (
       line !== currentLines[index] &&
       !line.includes("wordfence") &&
-      !line.includes("email-protection")
+      !line.includes("email-protection") &&
+      !line.includes('"csrf.token"') && // Ignore CSRF token lines
+      !line.includes('"joomla-script-options"') // Ignore joomla script options
     ) {
       differences.push(
         `Line ${index + 1} changed: "${line}" to "${
@@ -33,7 +35,7 @@ export default {
         url: "https://www.amityschool.nl/about/vacancies",
         key: "amity",
       },
-      { url: "https://www.ishilversum.nl/employment", key: "hilversum" },
+      // { url: "https://www.ishilversum.nl/employment", key: "hilversum" },
       { url: "https://www.isutrecht.nl/vacancies", key: "utrecht" },
     ];
 
@@ -43,7 +45,9 @@ export default {
       const currentContent = await fetchWebsiteContent(url);
       const previousContent = await env.copenhagenMarathon.get(key);
 
-      const logDiff = logDifferences(previousContent || "", currentContent);
+      const processedPrevious = preprocessContent(previousContent || "");
+      const processedCurrent = preprocessContent(currentContent);
+      const logDiff = logDifferences(processedPrevious, processedCurrent);
 
       if (logDiff) {
         console.log(`Website content has changed for: ${url}`);
