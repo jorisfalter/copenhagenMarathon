@@ -36,10 +36,11 @@ export default {
 
     const currentContent = await fetchWebsiteContent();
     const previousContent = await env.copenhagenMarathon.get(PREVIOUS_PAGE_KEY);
+    const logDiff = logDifferences(previousContent, currentContent);
 
-    if (previousContent !== currentContent) {
+    // if (previousContent !== currentContent) {
+    if (logDiff) {
       console.log("Website content has changed!");
-      const logDiff = logDifferences(previousContent, currentContent);
 
       // Update the stored content in KV
       await env.copenhagenMarathon.put(PREVIOUS_PAGE_KEY, currentContent);
