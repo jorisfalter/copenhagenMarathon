@@ -34,6 +34,7 @@ export default {
         key: "amity",
       },
       { url: "https://www.ishilversum.nl/employment", key: "hilversum" },
+      { url: "https://www.isutrecht.nl/vacancies", key: "utrecht" },
     ];
 
     for (const { url, key } of websites) {
