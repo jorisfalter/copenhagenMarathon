@@ -25,6 +25,12 @@ function logDifferences(previous, current) {
   return differences.length > 0 ? differences.join("\n") : null;
 }
 
+function preprocessContent(content) {
+  return content
+    .replace(/"csrf.token":"[a-f0-9]+"/g, '"csrf.token":"[FILTERED]"') // Replace dynamic tokens
+    .replace(/<script.*class="joomla-script-options.*<\/script>/g, ""); // Remove entire script block
+}
+
 export default {
   async scheduled(event, env, ctx) {
     console.log("Cron job triggered at: " + new Date().toISOString());
