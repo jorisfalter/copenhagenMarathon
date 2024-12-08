@@ -26,9 +26,22 @@ function logDifferences(previous, current) {
 }
 
 function preprocessContent(content) {
-  return content
-    .replace(/"csrf.token":"[a-f0-9]+"/g, '"csrf.token":"[FILTERED]"') // Replace dynamic tokens
-    .replace(/<script.*class="joomla-script-options.*<\/script>/g, ""); // Remove entire script block
+  return (
+    content
+      // Remove nonce values
+      .replace(/"nonce":"[a-f0-9]+"/g, '"nonce":"[FILTERED]"')
+      .replace(/nonce: '[a-f0-9]+',/g, "nonce: '[FILTERED]',")
+      // Normalize dynamic script data
+      .replace(/<script[^>]*>.*?<\/script>/g, (match) => {
+        if (match.includes("omapi_data") || match.includes("cookie_notice")) {
+          return ""; // Remove specific script blocks with dynamic data
+        }
+        return match; // Keep other scripts
+      })
+      // Remove unnecessary white space or line breaks for consistency
+      .replace(/\s+/g, " ")
+      .trim()
+  );
 }
 
 export default {
